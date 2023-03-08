@@ -38,12 +38,12 @@ export class AppComponent {
     this.activities=this.activityService.findAllActivities()
     this.localStorageService.activitiesChange.subscribe(async ()=>{
       this.activities= await this.localStorageService.getActivities()
-      this.groupByDate4()
+      this.groupByDate()
 
     })
 
 
-    this.groupByDate4()
+    this.groupByDate()
 
   }
 
@@ -51,7 +51,7 @@ export class AppComponent {
 
 /**------------------------------------------------------------------------------------------------------------------------------------ */
   addActivity(data:any):void{
-    console.log(data,'aqui addactivity')
+   
     this.activityAux=data.activity
     this.formType=data.option
   }
@@ -67,89 +67,9 @@ export class AppComponent {
   hideActivityForm():void{
     this.hide=!this.hide
   }
+
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-
-/*
-
-
-  groupByDate3(){
-
-    this.arrayGroupByDates=[];
-    console.log('que fue lo que recibio ps',this.activities)
-    this.activities.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
-    console.log('organizado por fecha',this.activities)
-    this.activities.forEach((element:Iactivity,i:number) => {
-
-      let currentDate=new Date(element.startDate).setHours(0, 0, 0)
-     
-       if(element.startDate){
-        console.log('que es esto',this.arrayGroupByDates[1])
-        console.log('todo bien aqui3')
-        
-          if(i===0){
-
-            
-            let miArray:any[]=[]
-            miArray.push(element)
-            this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
-            console.log('todo bien aqui 2')
-
-          }else if((i!=0) && (this.arrayGroupByDates[this.arrayGroupByDates.length-1].key1 != null)){
-            
-            let previousDate=new Date(this.arrayGroupByDates[this.arrayGroupByDates.length-1].key1).setHours(0, 0, 0)
-            console.log('todo bien aqui4')
-            if(currentDate===previousDate ){
-              
-              this.arrayGroupByDates[this.arrayGroupByDates.length-1].array.push(element)
-              console.log('todo bien aqui 5')
-           
-            }else{
-                
-                let miArray:any[]=[]
-                miArray.push(element)
-                this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
-                console.log('todo bien aqui 6',this.arrayGroupByDates)
-            }
-
-          }else if((i!=0) && (element.startDate)){
-
-            let miArray:any[]=[]
-            miArray.push(element)
-            this.arrayGroupByDates.push({ key1:element.startDate, array: miArray})
-            console.log('todo bien aqui 7',this.arrayGroupByDates)
-
-          }else{
-            
-            this.arrayGroupByDates[0].array.push(element)
-            console.log('todo bien aqui 8')
-
-          }
-          
-
-       }else{
-            if(i===0){
-              let miArray:any[]=[]
-              miArray.push(element)
-              this.arrayGroupByDates[0]={ key1: null, array: miArray}
-              console.log('todo bien aqui')
-
-            }else{
-              this.arrayGroupByDates[0].array.push(element)
-              console.log('todo bien aqui null 2 ',this.arrayGroupByDates)
-
-            }
-
-       }
-
-       
-    });
-    console.log('se completo',this.arrayGroupByDates,'asi quedaron las activities:',this.activities)
-   
-  }
-
-*/
-/**------------------------------------------------------------------------------------------------------------------------------------ */
-groupByDate4(){
+groupByDate(){
 
     this.arrayGroupByDates=[];
     let miArray:any[]=[]

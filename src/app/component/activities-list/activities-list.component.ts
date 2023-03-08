@@ -41,21 +41,18 @@ export class ActivitiesListComponent {
 
 
   }
-  addActivityWithDate(date:any){
-   
-    this.newEventHideForm.emit()
-    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
-    this.newEvent.emit({activity:this.activityAux,option:'new'});
-    
-  }
  
-  
 
 
-  createActivity(option:string){
-    
+  createActivity(date:any){
+
     this.newEventHideForm.emit()
-    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
+    if(date){
+      this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
+    }else{
+      this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
+
+    }
     this.newEvent.emit({activity:this.activityAux,option:'new'});
     
   }
@@ -91,10 +88,12 @@ export class ActivitiesListComponent {
     }else{
       let year=(new Date(date)).getFullYear()
     
+
       let day=(new Date(date)).getDate()
       let dayAux
       day<10?dayAux=`0${day}`:dayAux=`${day}`
      
+
       let month=(new Date(date)).getMonth()+1
       let monthAux
       month<10?monthAux=`0${month}`: monthAux=`${month}`
@@ -116,9 +115,7 @@ export class ActivitiesListComponent {
      
   
   
-      
-  
-      this.activity.startDate=`${year}-${month}-${dayAux} ${hourAux}:${minAux}:00`
+      this.activity.startDate=`${year}-${monthAux}-${dayAux} ${hourAux}:${minAux}:00`
       this.activityService.updateActivity(this.activity)
 
 

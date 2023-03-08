@@ -35,7 +35,7 @@ ngOnInit(): void {
   
 }
 
-
+//-------------------------------------------------------------------------------------------------------------------------
 ngOnChanges(changes:any):void{
   let actividad=changes.activity.currentValue
   
@@ -49,7 +49,7 @@ ngOnChanges(changes:any):void{
 
 
 }
-
+//-------------------------------------------------------------------------------------------------------------------------
 submitForm(form:any) {
 
   if(form.form.status==='VALID'){
@@ -67,15 +67,12 @@ submitForm(form:any) {
         status:this.activityForm.status
       }
 
-      
-      console.log('fechas',objet)
-
       this.activityService.createActivity(objet)
       this.newEventHideForm.emit()
 
     }else{
 
-      console.log('esto es lo que me otorga',this.activityForm.endDate)
+   
       let start
       let end
       if(this.activityForm.startDate===null){
@@ -108,30 +105,24 @@ submitForm(form:any) {
       }
 
       
-      //const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:this.activityForm.type,startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
-      console.log('fechas',objet)
+     
       this.activityService.updateActivity(objet)
       this.newEventHideForm.emit()
     }
 
   }else{
-    console.log('no es valido')
+    
     this.nameIsValid=false
   }
 
-  
-
-  
-
-
 
 }
-
+//-------------------------------------------------------------------------------------------------------------------------
 hideForm(){
   this.newEventHideForm.emit()
  
 }
-
+//-------------------------------------------------------------------------------------------------------------------------
 onChangeName(nameValidator:any){
     
   if(nameValidator.control.status==='INVALID'){

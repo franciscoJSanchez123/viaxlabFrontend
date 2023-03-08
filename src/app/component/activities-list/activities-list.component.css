@@ -37,11 +37,10 @@
       opacity: 1;
     }
   }
-
+/*-------------------------------------------------------------------------------------------*/
 .column-date{
 
     margin: 1.5%;
-
 }
 
 
@@ -50,6 +49,7 @@
 .date{
     margin-top: 2px;
     margin-bottom: 10px;
+    min-width: 16vw;
 }
 
 /*---------------------------------------------------------------------------------------*/
@@ -61,7 +61,7 @@
 }
 
 
-.list-container::-webkit-scrollbar-thumb { /*esta es la barra que se desplaza*/
+.list-container::-webkit-scrollbar-thumb { /*esta es la barra */
     
     background-color: #5173b8;   
     border-radius: 7px;
@@ -100,7 +100,25 @@ font-weight: 900;
     .column-date{
 
         margin: 3%;
-    
+        
+    }
+    .date{
+      min-width: 45vw;
     }
   }
 
+    @media screen and (max-width: 575px) {
+      .date{
+        min-width: 60vw;
+      }
+  
+  
+    }
+  
+    @media screen and (max-width: 445px) {
+      .date{
+        min-width: 80vw;
+      }
+  
+  }
+  
