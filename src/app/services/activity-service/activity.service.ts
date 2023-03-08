@@ -21,10 +21,13 @@ export class ActivityService {
 
 //----------------------------------------------------------------------------------
  findAllActivities(){
+  
   this.activities=activities
   this.localStorageService.saveActivities(this.activities)
   return this.activities
  }
+
+
 
 
 

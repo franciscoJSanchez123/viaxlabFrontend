@@ -18,7 +18,13 @@
            
             <span class="nueva" (click)="createActivity(group.key1)" >+ nueva</span>
         </div>
+
+        
     
       </ng-container>
+     
+      <div class="no-activities" *ngIf="!arrayGroupByDates.length" (click)="createActivity(null)">
+        <span> + Crea una nueva actividad</span> 
+      </div>
   </div>
 

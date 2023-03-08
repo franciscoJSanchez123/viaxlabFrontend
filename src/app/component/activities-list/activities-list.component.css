@@ -97,6 +97,26 @@ font-weight: 900;
     cursor: pointer;
 }
 
+/*---------------------------------------------------------------------------------------*/
+
+.no-activities{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-activities span{
+  font-size: 21px;
+  font-weight: 900;
+  color: #bdbdbd;
+}
+
+.no-activities span:hover {
+  cursor: pointer;
+}
+
 
 /*---------------------------------------------------------------------------------------*/
 /*
