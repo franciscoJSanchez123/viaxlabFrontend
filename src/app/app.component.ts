@@ -1,13 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { activities } from './activities/activities';
+import {  Component } from '@angular/core';
+
 import  { Iactivity} from './models/Iactivity';
 
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-
-import { InteractionService} from './services/interaction-services/interaction.service'
 import { ActivityService} from './services/activity-service/activity.service'
 import { LocalStorageService } from './services/localStorage-service/local-storage.service';
-import { ActivitiesListComponent } from './component/activities-list/activities-list.component';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +27,7 @@ export class AppComponent {
 
 
   constructor(
-    private interactionService:InteractionService,
+   
     private activityService:ActivityService,
     private localStorageService:LocalStorageService
     ) { }
@@ -47,16 +43,13 @@ export class AppComponent {
     })
 
 
-    //this.groupByDate()
     this.groupByDate3()
 
-    this.interactionService.hideActivityForm.subscribe(data=>{
-      this.hide=data;
-    })
-    
   }
 
 
+
+/**------------------------------------------------------------------------------------------------------------------------------------ */
   addActivity(data:any){
     console.log(data,'aqui addactivity')
     this.activityAux=data.activity
@@ -64,61 +57,18 @@ export class AppComponent {
   }
 
   createActivity(){
-    //this.interactionService.hide(option)
+    
     this.hide=!this.hide
     this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
     this.formType='new'
   }
 
-
+/**------------------------------------------------------------------------------------------------------------------------------------ */
   hideActivityForm(){
     this.hide=!this.hide
   }
 /**------------------------------------------------------------------------------------------------------------------------------------ */
 
-/*
-  addActivityWithDate(date:any){
-    this.interactionService.hide('change')
-    this.interactionService.addActivityWithDate(date)
-    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
-    
-  }
- 
-  
-
-
-  hideForm(option:string){
-    this.interactionService.hide(option)
-    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
-  }
-*/
-/**------------------------------------------------------------------------------------------------------------------------------------ */
-/** 
-  moveActivity(dropEvent:CdkDragDrop<any>):void{
-    const {previousContainer,container,currentIndex,previousIndex}=dropEvent ;
-    if(previousContainer === container){
-      console.log('esto es lo importante ',previousContainer,container ,currentIndex,previousIndex)
-      moveItemInArray(container.data, previousIndex,currentIndex);
-      return
-    }
-      
-    transferArrayItem(
-      previousContainer.data,
-      container.data,
-      previousIndex,
-      currentIndex,
-    );
-
-  
-   
-
-    console.log('esto es lo importante ',dropEvent,previousContainer,container ,currentIndex,previousIndex)
-    //moveItemInArray(container.data, previousIndex,currentIndex);
-
-  }
-
-*/
-/**------------------------------------------------------------------------------------------------------------------------------------ */
 
 
 
