@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
-import { LocalStorageService } from 'src/app/services/localStorage-service/local-storage.service';
 
 @Component({
   selector: 'app-activities-list',
@@ -10,19 +9,17 @@ import { LocalStorageService } from 'src/app/services/localStorage-service/local
   styleUrls: ['./activities-list.component.css']
 })
 export class ActivitiesListComponent {
-  activities:Iactivity[]=[]
+  
   activity!:Iactivity
   activityAux!:Iactivity
-  @Input() arrayGroupByDates!: any[];
-  @Output() newEvent = new EventEmitter<any>();
-  @Output() newEventHideForm = new EventEmitter<any>();
+  @Input() arrayGroupByDates!: any[];            //arreglo recibido desde app component con las actividades agrupadas por fecha  
+  @Output() newEvent = new EventEmitter<any>();  //se emite un evento (hijo-padre) hacia  app-component con la actividad que se va a editar para enviarla al formulario
 
 
 
   constructor(
     
-    private activityService:ActivityService,
-    private localStorageService:LocalStorageService
+    private activityService:ActivityService
     ) { }
 
 
@@ -33,10 +30,13 @@ export class ActivitiesListComponent {
    
 
   /**------------------------------------------------------------------------------------------------------------------------------------ */
+  /**---------Manipular actividades------------------------ */
 
-  editActivity(activity:Iactivity){
 
-    this.newEvent.emit({activity,option:'edit'});
+
+  editActivity(activity:Iactivity):void{                  //se ejecuta por evento (hijo-padre) desde app-activity para editar una actividad
+
+    this.newEvent.emit({activity,option:'edit'});    //se emite un evento (hijo-padre) hacia  app-component con la actividad que se va a editar para enviarla al formulario
 
 
 
@@ -44,35 +44,34 @@ export class ActivitiesListComponent {
  
 
 
-  createActivity(date:any){
+  createActivity(date:any):void{                      //se ejecuta al hacer click en "+ nueva"
 
-    this.newEventHideForm.emit()
+    
+
     if(date){
       this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
     }else{
       this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
 
     }
-    this.newEvent.emit({activity:this.activityAux,option:'new'});
+    this.newEvent.emit({activity:this.activityAux,option:'new'});         //se emite un evento (hijo-padre) hacia  app-component con la actividad que se va a editar para enviarla al formulario
     
   }
 
-/**------------------------------------------------------------------------------------------------------------------------------------ */
 
-  hideActivityForm(){
-    this.newEventHideForm.emit()
-  }
 
-  
 
-  
-    
 
 /**------------------------------------------------------------------------------------------------------------------------------------ */
+/**-------------------------------mover una actividad de una columna a otra--------------------------------- */
 
+
+//se manupulan la horas y las fechas de la actividad que se esta moviendo
+//y luego se llama al servicio de actividades para editar la actividad
+//a la que se le cambio la fecha
 
   moveActivity(dropEvent:CdkDragDrop<any>,date:string):void{
-    const {previousContainer,container,currentIndex,previousIndex}=dropEvent ;
+    const {previousContainer,container}=dropEvent ;
     if(previousContainer === container){
       
       return 
@@ -125,8 +124,11 @@ export class ActivitiesListComponent {
   }
 
   /**------------------------------------------------------------------------------------------------------------------------------------ */
+/**-----------------------------Formatear Fecha-------------------------------------------------------- */
+  
 
-  formatDate(date:string){
+//metodo para formatear las fechas de las lista 
+  formatDate(date:string):string{
 
     
     let day=(new Date(date)).getDate()

@@ -14,7 +14,6 @@ export class ActivityComponent {
   hideStatus:boolean=false
   @Input() activity!:Iactivity
   @Output() newEvent = new EventEmitter<any>();
-  @Output() newEventHideForm = new EventEmitter<any>();
 
 
   constructor(
@@ -28,7 +27,7 @@ export class ActivityComponent {
 
     editActivity(activityAux:Iactivity){
      
-      this.newEventHideForm.emit()
+      
       this.newEvent.emit(activityAux);
       //this.interactionService.addActivityWithDate(activityAux)
       

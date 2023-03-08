@@ -12,8 +12,8 @@ import { LocalStorageService } from './services/localStorage-service/local-stora
 })
 export class AppComponent {
   title = 'viaxlab';
-  activities:Iactivity[]=[]  
-  arrayGroupByDates:any[]=[];     //arreglo con las actividades agrupadas por fecha  
+  activities:Iactivity[]=[]       //arreglo de actividades 
+  arrayGroupByDates:any[]=[];     //se comunica (padre-hijo) con activities list contiene un arreglo con las actividades agrupadas por fecha  
   activityAux!:Iactivity          //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir 
   formType:string=''              //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   hide:boolean=false;             //esconde o muestra el formulario
@@ -57,7 +57,8 @@ export class AppComponent {
 
 
   addActivity(data:any):void{   //se ejecuta por evento (hijo-padre) desde activities list para crear o editar una actividad
-   
+
+    this.hide=!this.hide            //cambiar visibilidad del formulario
     this.activityAux=data.activity  //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir 
     this.formType=data.option       //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   }
@@ -68,7 +69,7 @@ export class AppComponent {
 
   createActivity():void{      //se ejecuta al hacer click en el boton
     
-    this.hide=!this.hide       //cambiar estado del formulario
+    this.hide=!this.hide       //cambiar visibilidad del formulario
     this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}   //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir
     this.formType='new'                                                                                    //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   }
