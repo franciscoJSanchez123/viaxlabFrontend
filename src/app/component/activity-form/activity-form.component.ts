@@ -15,7 +15,7 @@ export class ActivityFormComponent implements OnInit {
     startDate:'',
     endDate:'',
     status:'',
-    type:'',
+    type:'ACTIVITY',
 
   };
   @Input() activity!: Iactivity;
@@ -61,7 +61,7 @@ submitForm(form:any) {
       let objet={
         activityId:Math.floor(Math.random() * 100000000), 
         title:this.activityForm.title,
-        type:'ACTIVITY',
+        type:this.activityForm.type,
         startDate:this.activityForm.startDate?(this.activityForm.startDate.replace('T', ' ').concat(':00')):null,
         endDate:this.activityForm.endDate?(this.activityForm.endDate.replace('T', ' ').concat(':00')):null,
         status:this.activityForm.status

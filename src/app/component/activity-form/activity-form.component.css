@@ -172,6 +172,21 @@ input{
   color: #c72929;
 }
 
+/*..-----------------------------------------------------------------------------------------------*/
+.activity-type{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%
+}
+
+select{
+    height: 35px;
+    border: none;
+    outline: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.24);
+    border-radius: 7px;
+}
+/*..-----------------------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 767px) {
 

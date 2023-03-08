@@ -23,6 +23,14 @@
             <label><b>Nombre de la actividad</b></label>
             <div class="validator" [hidden]="nameIsValid" >*El nombre es requerido</div>
             <input #nameValidator="ngModel" (change)="onChangeName(nameValidator)" type="text"  name="name" [(ngModel)]="activityForm.title" [value]="activityForm.title" required minlength="3" maxlength="25">
+
+            <div class="activity-type">
+              <label><b>Tipo de actividad:</b></label>
+              <select name="miselect" [(ngModel)]="activityForm.type">
+                <option [value]="'FOOD'" >Comida</option>
+                <option [value]="'ACTIVITY'" >Actividad</option>
+                </select>
+            </div>
             
             <div class="date-form">
 
