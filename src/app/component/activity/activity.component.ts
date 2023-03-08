@@ -29,21 +29,21 @@ export class ActivityComponent {
 
 
 
-    editActivity(activity:Iactivity){          //se ejecuta al hacer click en icono de editar
+    editActivity(activity:Iactivity):void{          //se ejecuta al hacer click en icono de editar
      
       this.newEvent.emit(activity);                          //se emite un evento (hijo-padre) hacia  app-acivities list con la actividad que se va a editar para enviarla al formulario
      
       
     }
 
-    editStatus(activity:Iactivity,status:any){    //se ejecuta al hacer click en las opciones para cambiar estado de la actividad
+    editStatus(activity:Iactivity,status:any):void{    //se ejecuta al hacer click en las opciones para cambiar estado de la actividad
       activity.status=status
       this.activityService.updateActivity(activity)  //llama al servicio de actividades para actualizar la actividad
     }
 
     
 
-    deleteActivity(id:number){                    //se ejecuta al hacer click en la opcion "Eliminar Actividad"
+    deleteActivity(id:number):void{                    //se ejecuta al hacer click en la opcion "Eliminar Actividad"
       this.activityService.deleteActivity(id)     //llama al servicio de actividades para eliminar  la actividad
     }
 
@@ -58,7 +58,7 @@ export class ActivityComponent {
 //---------------------------------------------------------------------------------------------
 //--------------deplegar opciones para modificar estado de la actividad-----------------------
 
-    changeHideStatus(){                             //se ejecuta al hacer click en el icono menu
+    changeHideStatus():void{                             //se ejecuta al hacer click en el icono menu
       this.hideStatus=!this.hideStatus
     }
 
@@ -69,7 +69,7 @@ export class ActivityComponent {
 //---------------------------------------------------------------------------------------------
 //----------------extarer hora de la actividad-------------------------------------
 
-    extractTime(date:string){
+    extractTime(date:string):string{
       let hour;
       let min;
       if(!date){
