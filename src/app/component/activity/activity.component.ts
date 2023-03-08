@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
-import { InteractionService } from 'src/app/services/interaction-services/interaction.service';
 
 @Component({
   selector: 'app-activity',
@@ -9,47 +8,67 @@ import { InteractionService } from 'src/app/services/interaction-services/intera
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent {
-  activities:Iactivity[]=[]
-  activityAux!:Iactivity
-  hideStatus:boolean=false
-  @Input() activity!:Iactivity
-  @Output() newEvent = new EventEmitter<any>();
+  hideStatus:boolean=false                         //mostrar o ocultar menu de  opciones de la actividad 
+  @Input() activity!:Iactivity                     //actividad recibida desde activies list  
+  @Output() newEvent = new EventEmitter<any>();    //emite un evento (hijo-padre) hacia  app-activities-list con la actividad que se va a editar para enviarla al formulario
 
 
   constructor(
-   private interactionService:InteractionService,
     private activityService:ActivityService,
     ) { }
 
 
 
-//---------------------------------------------------------------------------------------------
 
-    editActivity(activityAux:Iactivity){
+
+
+
+    
+//---------------------------------------------------------------------------------------------
+/**---------Manipular actividades------------------------ */
+
+
+
+    editActivity(activity:Iactivity){          //se ejecuta al hacer click en icono de editar
      
-      
-      this.newEvent.emit(activityAux);
-      //this.interactionService.addActivityWithDate(activityAux)
+      this.newEvent.emit(activity);                          //se emite un evento (hijo-padre) hacia  app-acivities list con la actividad que se va a editar para enviarla al formulario
+     
       
     }
 
-    editStatus(activity:Iactivity,status:any){
+    editStatus(activity:Iactivity,status:any){    //se ejecuta al hacer click en las opciones para cambiar estado de la actividad
       activity.status=status
-      this.activityService.updateActivity(activity)
+      this.activityService.updateActivity(activity)  //llama al servicio de actividades para actualizar la actividad
     }
 
     
 
-    deleteActivity(id:number){
-      this.activityService.deleteActivity(id)
+    deleteActivity(id:number){                    //se ejecuta al hacer click en la opcion "Eliminar Actividad"
+      this.activityService.deleteActivity(id)     //llama al servicio de actividades para eliminar  la actividad
     }
 
-//---------------------------------------------------------------------------------------------
 
-    changeHideStatus(){
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------------
+//--------------deplegar opciones para modificar estado de la actividad-----------------------
+
+    changeHideStatus(){                             //se ejecuta al hacer click en el icono menu
       this.hideStatus=!this.hideStatus
     }
+
+
+
+
+
 //---------------------------------------------------------------------------------------------
+//----------------extarer hora de la actividad-------------------------------------
+
     extractTime(date:string){
       let hour;
       let min;

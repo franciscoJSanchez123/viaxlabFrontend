@@ -13,7 +13,7 @@ export class ActivitiesListComponent {
   activity!:Iactivity
   activityAux!:Iactivity
   @Input() arrayGroupByDates!: any[];            //arreglo recibido desde app component con las actividades agrupadas por fecha  
-  @Output() newEvent = new EventEmitter<any>();  //se emite un evento (hijo-padre) hacia  app-component con la actividad que se va a editar para enviarla al formulario
+  @Output() newEvent = new EventEmitter<any>();  //emite un evento (hijo-padre) hacia  app-component con la actividad que se va a editar para enviarla al formulario
 
 
 
