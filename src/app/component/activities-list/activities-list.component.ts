@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDragDrop} from '@angular/cdk/drag-drop';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
 import { LocalStorageService } from 'src/app/services/localStorage-service/local-storage.service';
-import { InteractionService } from 'src/app/services/interaction-services/interaction.service';
 
 @Component({
   selector: 'app-activities-list',
@@ -21,7 +20,7 @@ export class ActivitiesListComponent {
 
 
   constructor(
-    private interactionService:InteractionService,
+    
     private activityService:ActivityService,
     private localStorageService:LocalStorageService
     ) { }
@@ -38,10 +37,12 @@ export class ActivitiesListComponent {
   editActivity(activity:Iactivity){
 
     this.newEvent.emit({activity,option:'edit'});
+
+
+
   }
   addActivityWithDate(date:any){
-    //this.interactionService.hide('change')
-    //this.interactionService.addActivityWithDate(date)
+   
     this.newEventHideForm.emit()
     this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
     this.newEvent.emit({activity:this.activityAux,option:'new'});
@@ -52,13 +53,14 @@ export class ActivitiesListComponent {
 
 
   createActivity(option:string){
-    //this.interactionService.hide(option)
+    
     this.newEventHideForm.emit()
     this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
     this.newEvent.emit({activity:this.activityAux,option:'new'});
     
   }
 
+/**------------------------------------------------------------------------------------------------------------------------------------ */
 
   hideActivityForm(){
     this.newEventHideForm.emit()
@@ -75,28 +77,14 @@ export class ActivitiesListComponent {
   moveActivity(dropEvent:CdkDragDrop<any>,date:string):void{
     const {previousContainer,container,currentIndex,previousIndex}=dropEvent ;
     if(previousContainer === container){
-      //console.log('esto es lo importante ',previousContainer,container ,currentIndex,previousIndex)
-      //moveItemInArray(container.data, previousIndex,currentIndex);
+      
       return 
     }
 
     this.activity=dropEvent.item.data
     this.activity.startDate=date
     this.activityService.updateActivity(this.activity)
-      /*
-    transferArrayItem(
-      previousContainer.data,
-      container.data,
-      previousIndex,
-      currentIndex,
-    );
-*/
-  
-   
-
-    //console.log('esto es lo importante aquiii',dropEvent,previousContainer,container ,currentIndex,previousIndex)
-    //moveItemInArray(container.data, previousIndex,currentIndex);
-
+     
   }
 
   /**------------------------------------------------------------------------------------------------------------------------------------ */

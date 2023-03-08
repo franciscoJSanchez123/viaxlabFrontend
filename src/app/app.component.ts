@@ -50,13 +50,13 @@ export class AppComponent {
 
 
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-  addActivity(data:any){
+  addActivity(data:any):void{
     console.log(data,'aqui addactivity')
     this.activityAux=data.activity
     this.formType=data.option
   }
 
-  createActivity(){
+  createActivity():void{
     
     this.hide=!this.hide
     this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
@@ -64,7 +64,7 @@ export class AppComponent {
   }
 
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-  hideActivityForm(){
+  hideActivityForm():void{
     this.hide=!this.hide
   }
 /**------------------------------------------------------------------------------------------------------------------------------------ */
