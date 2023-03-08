@@ -1,0 +1,163 @@
+
+/*---------------------------------------activities list----------------------------------------*/
+:host{
+    width:100% ;
+    
+
+    display: flex;
+}
+
+/*-------------------------------------------activity--------------------------------------------*/
+.list-container{
+    display: flex;
+    flex-direction: row;
+    /*justify-content:center;*/
+
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: visible;
+
+    width:100% ;
+    animation-name:Animated ;
+    animation-duration: 2s ;
+    animation-timing-function: linear;
+}
+
+
+@keyframes Animated{
+      
+    0% {
+      transform: translate(0%, -4%);
+      opacity: 0;
+        
+    }
+   
+    100%{
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+  }
+
+.column-date{
+
+    margin: 1.5%;
+
+}
+
+
+
+
+.date{
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+/*-------------------------------------------activity--------------------------------------------*/
+.list-container::-webkit-scrollbar {    /*esto es para la parte de atras del scroll*/
+    background: none;
+    height: 8px;
+    width: 8px;
+    /*background-color: #1a1a1a;*/
+}
+
+
+.list-container::-webkit-scrollbar-thumb { /*esta es la barra que se desplaza*/
+    
+    background-color: #5173b8;   
+    border-radius: 7px;
+   
+  }
+
+
+
+
+
+/*-------------------------------------------activity--------------------------------------------*/
+
+
+.activity{
+    background-color: #492c2c;
+    height: 15vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom: 11px;
+
+    border-style: solid;
+    border-radius: 7px;
+    border-color: #565656;
+    border-width: 1px;
+}
+
+.activity-container{
+    background-color: #2c492c;
+    height: 90%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.activity-avatar{
+    width: 20%;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+    color: #000000;
+}
+
+#activity-avatar{
+    margin-left: 5%;
+    width: 45px;
+    height: 45px;
+    background-color: #00ffe7;
+    border-radius: 50%;
+
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+    font-size: 150%;
+}
+
+
+.activity-data{
+   margin-left: 3%;
+}
+
+
+.nueva{
+color: #bdbdbd;
+font-weight: 900;
+
+
+}
+.nueva:hover {
+    color: #000;
+    cursor: pointer;
+}
+/*
+.cdk-drop-list-receiving{
+ 
+}
+-*/
+
+
+
+  @media screen and (max-width: 767px) {
+    .column-date{
+
+        margin: 3%;
+    
+    }
+  }
+

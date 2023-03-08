@@ -1,0 +1,58 @@
+
+  <div class="list-container" cdkDropListGroup>
+    <ng-container   *ngFor="let group of arrayGroupByDates ">
+
+        <div 
+            class="column-date"
+            cdkDropList
+            [cdkDropListData]="group.array"
+            (cdkDropListDropped)="moveActivity($event,group.key1)">
+    
+    
+            <div class="date">
+              <span><b>{{group.key1===null?'Sin fecha asignada' :formatDate(group.key1)}}</b></span><span> ({{group.array.length}})</span>
+            </div>
+
+
+            <app-activity *ngFor="let activity of group.array " [activity]="activity" (newEvent)="editActivity($event)" (newEventHideForm)="hideActivityForm()"></app-activity>
+     <!--
+            <ng-container *ngFor="let activity of group.array ">
+          
+    
+              <div 
+                class="activity"
+                cdkDrag
+                [cdkDragData]="activity">
+                
+                  <div class="activity-container" >
+                      <div class="activity-avatar">
+    
+                        <div id="activity-avatar">
+                          {{activity.type.charAt(0).toUpperCase()}}
+                        </div>
+    
+                      </div>
+                      <div class="activity-data">
+                          <div>
+                            {{activity.title}}
+                          </div>
+                          <div>
+                            {{activity.status}}
+                          </div>
+                          <div>
+                            {{activity.type}}
+                          </div>
+    
+                      </div>
+                  </div>
+                </div>  
+    
+            </ng-container>
+
+            -->
+            <span class="nueva" (click)="group.key1===null? createActivity('change') : addActivityWithDate(group.key1)" >+ nueva</span>
+        </div>
+    
+      </ng-container>
+  </div>
+

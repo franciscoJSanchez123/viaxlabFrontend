@@ -1,0 +1,19 @@
+
+    <ng-container [ngSwitch]="activityType">
+
+
+        <div *ngSwitchCase="'ACTIVITY'" class="activity-img">
+            <img src="assets/teleférico.png" alt="ACTIVITY">
+        </div>
+
+        <div *ngSwitchCase="'FOOD'" class="activity-img" [ngStyle]="{'background-color':'#c50a24'}">
+            <img src="assets/cubiertos.png" alt="FOOD">
+        </div>
+
+        <div *ngSwitchDefault class="activity-img" >
+            <img src="assets/teleférico.png" alt="ACTIVITY">
+        </div>
+
+       
+
+    </ng-container>

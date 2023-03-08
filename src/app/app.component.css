@@ -1,0 +1,281 @@
+.dashboard{
+
+    
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+
+    position: relative;
+
+}
+
+
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+
+
+.dashboard-menu{
+    background-color: #5173b8;
+    height: 100vh;
+    width: 20vw;
+
+  
+
+
+}
+.dashboard-menu-logo{
+
+    height: 15vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+   
+    margin-left: 1vw;
+    margin-right: 1vw;
+
+    font-size: 29px;
+    font-weight: 900;
+    color: #ffffff;
+   
+
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    margin: 2px
+
+}
+
+  button{
+    height: 6vh;
+    width: 100%;
+    border-radius: 7px;
+    border-style: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 8px;
+    margin-right: 8px;
+
+    background-color: #5173b8;
+    color: #ffffff;
+}
+.button span{
+    margin-right: 5%;
+}
+button:hover{
+    scale: 1.03;
+    cursor: pointer;
+}
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+.dashboard-main{
+    
+    height: 100vh;
+    width: 80vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center
+
+}
+
+
+
+
+/*-----------------------------------------------------------------------*/
+.dashboard-header{
+    
+    height: 15vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
+}
+
+
+.header-container{
+    
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+    font-size: 20px;
+    
+}
+
+/*-----------------------------------------------------------------------*/
+.dashboard-body{
+   
+    height: 85vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+/*---------------------------------------activities list----------------------------------------*/
+
+.date{
+
+    margin: 0.6%;
+
+    width:20% ;
+}
+
+
+
+
+
+/*-------------------------------------------activity--------------------------------------------*/
+
+
+.activity{
+    background-color: #492c2c;
+    height: 15vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom: 11px;
+
+    border-style: solid;
+    border-radius: 7px;
+    border-color: #565656;
+    border-width: 1px;
+}
+
+.activity-container{
+    background-color: #2c492c;
+    height: 90%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.activity-avatar{
+    width: 20%;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+    color: #000000;
+}
+
+#activity-avatar{
+    margin-left: 5%;
+    width: 45px;
+    height: 45px;
+    background-color: #00ffe7;
+    border-radius: 50%;
+
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+
+    font-size: 150%;
+}
+
+
+.activity-data{
+   margin-left: 3%;
+}
+
+
+
+/*-----------------------------------------------------------drop & drag---------------------------------------------------------------*/
+
+
+
+.cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+  @media screen and (max-width: 767px) {
+    .dashboard{
+
+    
+       
+        flex-direction: column;
+        
+    
+    }
+
+    .dashboard-menu{
+       
+        height: 12vh;
+        width: 100vw;
+
+    
+    }
+
+    .dashboard-main{
+    
+        height: 88vh;
+        width: 100vw;
+    
+       
+    
+    }
+
+    .dashboard-header{
+    
+        height: 15%;
+        
+    
+       
+    }
+    
+    
+
+    
+    .dashboard-body{
+       
+        height: 85%;
+       
+    }
+  }
+
+
+
+  /*-----------------------------------------------------------------------*/
