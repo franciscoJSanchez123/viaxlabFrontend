@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './component/button/button.component';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +14,6 @@ import { ActivityAvatarComponent } from './component/activity-avatar/activity-av
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent,
     ActivityFormComponent,
     ActivitiesListComponent,
     ActivityComponent,
