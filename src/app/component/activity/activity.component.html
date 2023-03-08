@@ -9,28 +9,17 @@
 
                       <app-activity-avatar [activityType]="activity.type"></app-activity-avatar>
 
-                        <!--
-                      <div class="activity-avatar">
-    
-                        <div class="activity-img">
-                         
-                          <svg  xmlns="http://www.w3.org/2000/svg"  fill="#c5c5c5" viewBox="0 0 24 24" width="24px" height="88%">    
-                            <path d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"/>
-                          </svg>
-                        </div>
-    
-                      </div>
-
-                      -->
+                     
                       <div class="activity-data">
+
                           <div class="activity-title">
-                           <span><b>{{activity.title}}</b> </span>
+                             <span><b>{{activity.title}}</b> </span>
                           </div>
                           <div class="activity-hour" *ngIf="activity.startDate">
-                            <span>{{extractTime(activity.startDate)}}-{{extractTime(activity.endDate)}}</span>
+                             <span>{{extractTime(activity.startDate)}}-{{extractTime(activity.endDate)}}</span>
                            </div>
                           <div class="activity-status" *ngIf="activity.status">
-                           <span [ngStyle]="{'background-color':activity.status==='DONE'?'#b3ffd1' : '#b3dfff'}"> {{activity.status==='DONE'?'Completada' : 'En progreso'}}</span>
+                             <span [ngStyle]="{'background-color':activity.status==='DONE'?'#b3ffd1' : '#b3dfff'}"> {{activity.status==='DONE'?'Completada' : 'En progreso'}}</span>
                           </div>
                           
                          
@@ -38,15 +27,16 @@
                   </div>
 
                   <div class="action-buttons">
+
                     <div class="action-icon" (click)="editActivity(activity)" >
                         <svg  xmlns="http://www.w3.org/2000/svg"  fill="#c5c5c5" viewBox="0 0 24 24" width="24px" height="88%">    
                           <path d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"/>
                       </svg>
-                      </div>
+                    </div>
+
                     <div class="action-icon" (click)="changeHideStatus()">
                         <svg  xmlns="http://www.w3.org/2000/svg" fill="#c5c5c5" width="24" height="24" viewBox="0 0 24 24">
                           <path fill-rule="evenodd" d="M7,12 C7,13.1045695 6.1045695,14 5,14 C3.8954305,14 3,13.1045695 3,12 C3,10.8954305 3.8954305,10 5,10 C6.1045695,10 7,10.8954305 7,12 Z M21,12 C21,13.1045695 20.1045695,14 19,14 C17.8954305,14 17,13.1045695 17,12 C17,10.8954305 17.8954305,10 19,10 C20.1045695,10 21,10.8954305 21,12 Z M14,12 C14,13.1045695 13.1045695,14 12,14 C10.8954305,14 10,13.1045695 10,12 C10,10.8954305 10.8954305,10 12,10 C13.1045695,10 14,10.8954305 14,12 Z"/>
-                        
                         </svg>
                     </div>
 
@@ -58,27 +48,7 @@
                       <span (click)="deleteActivity(activity.activityId)" [ngStyle]="{'color':'#d54a4a'}">Eliminar Actividad</span>
                     </div>
 
-                    <!--
-                    <svg xmlns="http://www.w3.org/2000/svg"  fill="#ffffff " viewBox="0 0 24 24" width="24px" height="24px">    
-                        <path d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff " width="24" height="24" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M7,12 C7,13.1045695 6.1045695,14 5,14 C3.8954305,14 3,13.1045695 3,12 C3,10.8954305 3.8954305,10 5,10 C6.1045695,10 7,10.8954305 7,12 Z M21,12 C21,13.1045695 20.1045695,14 19,14 C17.8954305,14 17,13.1045695 17,12 C17,10.8954305 17.8954305,10 19,10 C20.1045695,10 21,10.8954305 21,12 Z M14,12 C14,13.1045695 13.1045695,14 12,14 C10.8954305,14 10,13.1045695 10,12 C10,10.8954305 10.8954305,10 12,10 C13.1045695,10 14,10.8954305 14,12 Z"/>
-                    
-                    </svg>
-
-                    
-                    <span (click)="editActivity(activity)">E</span>
-                    <span (click)="changeHideStatus()">X</span>
-                    <div class="status-option" *ngIf="hideStatus">
-                        <span >Estado</span>
-                        <span (click)="editStatus(activity,'DONE')">Completada</span>
-                        <span (click)="editStatus(activity,'IN_PROGRESS')">En progreso</span>
-                        <span (click)="editStatus(activity,null)">remover estado</span>
-                        <span (click)="deleteActivity(activity.activityId)" [ngStyle]="{'color':'#d54a4a'}">eliminar</span>
-                    </div>
-
-                    -->
+                   
                 </div>
 
                   

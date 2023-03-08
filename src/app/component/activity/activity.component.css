@@ -125,38 +125,10 @@
    cursor: pointer;
 }
 
-/*-----------------------------------------------------------------------*/
 
 
-.activity-avatar{
-    width: 20%;
 
-    display:flex;
-    flex-direction: column;
-    align-items:center;
 
-    color: #000000;
-
-    margin-left: 7px;
-    margin-right: 7px;
-}
-
-.activity-img{
-   
-    width: 45px;
-    height: 45px;
-    background-color: #00ffe7;
-    border-radius: 50%;
-
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
-
-    font-size: 150%;
-
-   
-}
 /*---------------------------------------------------------------------------*/
 .activity-data{
     width: 100%;

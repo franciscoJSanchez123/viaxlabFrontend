@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
-import { InteractionService } from 'src/app/services/interaction-services/interaction.service';
 
 @Component({
   selector: 'app-activity',
@@ -10,21 +9,24 @@ import { InteractionService } from 'src/app/services/interaction-services/intera
 })
 export class ActivityComponent {
   activities:Iactivity[]=[]
-  @Input() activity!:Iactivity
   activityAux!:Iactivity
-  @Output() newEvent = new EventEmitter<any>();
   hideStatus:boolean=false
+  @Input() activity!:Iactivity
+  @Output() newEvent = new EventEmitter<any>();
   @Output() newEventHideForm = new EventEmitter<any>();
+
+
   constructor(
-    private interactionService:InteractionService,
+   
     private activityService:ActivityService,
     ) { }
 
+
+
+//---------------------------------------------------------------------------------------------
+
     editActivity(activityAux:Iactivity){
-      //this.interactionService.hide('change')
-      //this.interactionService.addActivityWithDate(date)
-      //this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
-      console.log(activityAux, 'ultimo componente')
+     
       this.newEventHideForm.emit()
       this.newEvent.emit(activityAux);
       
@@ -35,14 +37,18 @@ export class ActivityComponent {
       this.activityService.updateActivity(activity)
     }
 
-    changeHideStatus(){
-      this.hideStatus=!this.hideStatus
-    }
+    
 
     deleteActivity(id:number){
       this.activityService.deleteActivity(id)
     }
 
+//---------------------------------------------------------------------------------------------
+
+    changeHideStatus(){
+      this.hideStatus=!this.hideStatus
+    }
+//---------------------------------------------------------------------------------------------
     extractTime(date:string){
       let hourAux=(new Date(date)).getHours();
       let minAux=(new Date(date)).getMinutes();
