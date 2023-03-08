@@ -1,18 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
-import { InteractionService} from '../../services/interaction-services/interaction.service'
 @Component({
   selector: 'app-activity-form',
   templateUrl: './activity-form.component.html',
   styleUrls: ['./activity-form.component.css']
 })
 export class ActivityFormComponent implements OnInit {
-  name2:string='';
+  
   
   activityForm: Iactivity={
-    activityId:1000,
+    activityId:0,
     title:'',
     startDate:'',
     endDate:'',
@@ -26,7 +24,6 @@ export class ActivityFormComponent implements OnInit {
   nameIsValid:boolean=true;
   
 constructor(
-  private interactionService:InteractionService,
   private activityService:ActivityService,
   ) { }
 
@@ -60,7 +57,7 @@ submitForm(form:any) {
     this.nameIsValid=false
 
     if(this.formType==='new'){
-      const objet={activityId:100, title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
+      const objet={activityId:Math.floor(Math.random() * 100000000), title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
       this.activityService.createActivity(objet)
       this.newEventHideForm.emit()
 
