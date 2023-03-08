@@ -38,12 +38,12 @@ export class AppComponent {
     this.activities=this.activityService.findAllActivities()
     this.localStorageService.activitiesChange.subscribe(async ()=>{
       this.activities= await this.localStorageService.getActivities()
-      this.groupByDate3()
+      this.groupByDate4()
 
     })
 
 
-    this.groupByDate3()
+    this.groupByDate4()
 
   }
 
@@ -69,7 +69,7 @@ export class AppComponent {
   }
 /**------------------------------------------------------------------------------------------------------------------------------------ */
 
-
+/*
 
 
   groupByDate3(){
@@ -146,4 +146,52 @@ export class AppComponent {
     console.log('se completo',this.arrayGroupByDates,'asi quedaron las activities:',this.activities)
    
   }
+
+*/
+/**------------------------------------------------------------------------------------------------------------------------------------ */
+groupByDate4(){
+
+    this.arrayGroupByDates=[];
+    let miArray:any[]=[]
+    this.activities.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+
+
+    this.activities.forEach((element:Iactivity,i:number) => {
+
+        let currentDate=new Date(element.startDate).setHours(0, 0, 0)
+
+        if(i===0){
+
+            miArray=[]
+            miArray.push(element)
+            this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
+
+
+
+        }else{
+
+
+            let previousDate=new Date(this.arrayGroupByDates[this.arrayGroupByDates.length-1].key1).setHours(0, 0, 0)
+            
+            if(currentDate===previousDate ){
+              
+              this.arrayGroupByDates[this.arrayGroupByDates.length-1].array.push(element)
+             
+           
+            }else{
+                
+                miArray=[]
+                miArray.push(element)
+                this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
+                
+            }
+
+
+        }
+
+    })
+
+
+}
+  
 }

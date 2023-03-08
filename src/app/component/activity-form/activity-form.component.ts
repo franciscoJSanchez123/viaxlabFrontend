@@ -57,12 +57,55 @@ submitForm(form:any) {
     this.nameIsValid=false
 
     if(this.formType==='new'){
-      const objet={activityId:Math.floor(Math.random() * 100000000), title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
+
+      let objet={
+        activityId:Math.floor(Math.random() * 100000000), 
+        title:this.activityForm.title,
+        type:'ACTIVITY',
+        startDate:this.activityForm.startDate?(this.activityForm.startDate.replace('T', ' ').concat(':00')):null,
+        endDate:this.activityForm.endDate?(this.activityForm.endDate.replace('T', ' ').concat(':00')):null,
+        status:this.activityForm.status
+      }
+
+      
+      console.log('fechas',objet)
+
       this.activityService.createActivity(objet)
       this.newEventHideForm.emit()
 
     }else{
-      const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:this.activityForm.type,startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
+
+      console.log('esto es lo que me otorga',this.activityForm.endDate)
+      let start
+      let end
+      if(this.activityForm.startDate.length===16){
+        start=this.activityForm.startDate.replace('T', ' ').concat(':00')
+      }else if(this.activityForm.startDate===''){
+        start=null
+      }else{
+        start=this.activityForm.startDate
+      }
+
+      if(this.activityForm.endDate.length===16){
+        end=this.activityForm.endDate.replace('T', ' ').concat(':00')
+      }else if(this.activityForm.endDate===''){
+        end=null
+      }else{
+        end=this.activityForm.endDate
+      }
+
+      let objet={
+        activityId:this.activityForm.activityId, 
+        title:this.activityForm.title,
+        type:this.activityForm.type,
+        startDate:start,
+        endDate:end,
+        status:this.activityForm.status
+      }
+
+      
+      //const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:this.activityForm.type,startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
+      console.log('fechas',objet)
       this.activityService.updateActivity(objet)
       this.newEventHideForm.emit()
     }

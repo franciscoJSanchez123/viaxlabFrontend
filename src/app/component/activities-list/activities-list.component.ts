@@ -116,7 +116,6 @@ export class ActivitiesListComponent {
     let day=(new Date(date)).getDate()
     let monthAux=(new Date(date)).getMonth()
     let month;
-    console.log('aqui esta el dia',date, day,(new Date(date)))
 
     switch(monthAux){
 
