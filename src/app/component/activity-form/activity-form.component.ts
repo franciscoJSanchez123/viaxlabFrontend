@@ -9,7 +9,7 @@ import { ActivityService } from 'src/app/services/activity-service/activity.serv
 export class ActivityFormComponent implements OnInit {
   
   
-  activityForm: Iactivity={
+  activityForm: Iactivity={                               //variable que maneja el formulario
     activityId:0,
     title:'',
     startDate:'',
@@ -18,10 +18,10 @@ export class ActivityFormComponent implements OnInit {
     type:'ACTIVITY',
 
   };
-  @Input() activity!: Iactivity;
-  @Input() formType!: string;
-  @Output() newEventHideForm = new EventEmitter<any>();
-  nameIsValid:boolean=true;
+  @Input() activity!: Iactivity;                          //recibe desde app-component, recibe las actividades que se van a editar
+  @Input() formType!: string;                             //recibe desde app-component, indica si se crea o edita una actividad
+  @Output() newEventHideForm = new EventEmitter<any>();   //emite evento para esconder el formulario
+  nameIsValid:boolean=true;                               //variable aux  para validar form
   
 constructor(
   private activityService:ActivityService,
@@ -36,6 +36,10 @@ ngOnInit(): void {
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
+//escucha los cambios   en la variable activity que es la que recibe las actividades que se van a editar
+//y luego los guarda en la 
+//variable activityForm que es la que maneja el formulario
+
 ngOnChanges(changes:any):void{
   let actividad=changes.activity.currentValue
   
@@ -49,7 +53,18 @@ ngOnChanges(changes:any):void{
 
 
 }
+
+
+
+
 //-------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------enviar formulario
+
+//si el formulario es valido (se introdujo el nombre de la actividad) se chekea si se va a crear o editar una actividad
+//luego se formatean las fechas y se llama al servicio de actividades para crear o editar la actividad segun sea el caso
+
+
+
 submitForm(form:any) {
 
   if(form.form.status==='VALID'){
@@ -118,11 +133,19 @@ submitForm(form:any) {
 
 }
 //-------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------esconder  formulario
+
+
+
 hideForm(){
   this.newEventHideForm.emit()
  
 }
+
 //-------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------detectar cambios en el input del nombre de la actividad para validacion
+
+
 onChangeName(nameValidator:any){
     
   if(nameValidator.control.status==='INVALID'){

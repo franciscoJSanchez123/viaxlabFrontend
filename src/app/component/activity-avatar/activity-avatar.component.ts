@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./activity-avatar.component.css']
 })
 export class ActivityAvatarComponent {
-  @Input() activityType: string="";
+  @Input() activityType: string="";  //recibe el tipo de actividad
 }
