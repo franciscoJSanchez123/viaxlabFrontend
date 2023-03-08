@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {CdkDragDrop} from '@angular/cdk/drag-drop';
+import {CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
 import { LocalStorageService } from 'src/app/services/localStorage-service/local-storage.service';
@@ -82,7 +82,28 @@ export class ActivitiesListComponent {
     }
 
     this.activity=dropEvent.item.data
-    this.activity.startDate=date
+    
+    let year=(new Date(date)).getFullYear()
+    
+    let day=(new Date(date)).getDate()
+    let dayAux
+    day<10?dayAux=`0${day}`:dayAux=`${day}`
+   
+    let month=(new Date(date)).getMonth()+1
+    let monthAux
+    month<10?monthAux=`0${month}`: monthAux=`${month}`
+  
+
+    let hour=(new Date(this.activity.startDate)).getHours();
+    let hourAux
+    hour<10?hourAux=`0${hour}`:hourAux=`${hour}`
+
+
+    let min=(new Date(this.activity.startDate)).getMinutes();
+    let minAux
+    min<10?minAux=`0${min}`:minAux=`${min}`
+
+    this.activity.startDate=`${year}-${month}-${day} ${hour}:${min}:00`
     this.activityService.updateActivity(this.activity)
      
   }

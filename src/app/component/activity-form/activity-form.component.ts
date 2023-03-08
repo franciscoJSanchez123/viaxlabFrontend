@@ -62,7 +62,7 @@ submitForm(form:any) {
       this.newEventHideForm.emit()
 
     }else{
-      const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
+      const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:this.activityForm.type,startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
       this.activityService.updateActivity(objet)
       this.newEventHideForm.emit()
     }
