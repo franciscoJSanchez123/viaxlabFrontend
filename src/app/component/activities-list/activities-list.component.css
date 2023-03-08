@@ -114,18 +114,11 @@ font-weight: 900;
 
       .list-container::-webkit-scrollbar {    /*esto es para la parte de atras del scroll*/
        
-        height: 18px;
-        width: 18px;
+        height: 23px;
+        width: 23px;
         /*background-color: #1a1a1a;*/
     }
     
-    
-    .list-container::-webkit-scrollbar-thumb { /*esta es la barra */
-        
-     
-        border-radius: 7px;
-       
-      }
     
   
   
