@@ -12,14 +12,11 @@ import { LocalStorageService } from './services/localStorage-service/local-stora
 })
 export class AppComponent {
   title = 'viaxlab';
-  hide:boolean=false;
-  activities:Iactivity[]=[]
-  activity!:Iactivity
-  activityAux!:Iactivity
-  datesActivities:any[]=[];
-  date!:any;
-  arrayGroupByDates:any[]=[];
-  formType:string=''
+  activities:Iactivity[]=[]  
+  arrayGroupByDates:any[]=[];     //arreglo con las actividades agrupadas por fecha  
+  activityAux!:Iactivity          //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir 
+  formType:string=''              //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
+  hide:boolean=false;             //esconde o muestra el formulario
 
 
 
@@ -32,7 +29,8 @@ export class AppComponent {
     private localStorageService:LocalStorageService
     ) { }
 
-
+/**------------------------------------------------------------------------------------------------------------------------------------ */
+/**---------solicitar actividades y permanecer escuchando por cambios en el array de actividads------------------------ */
   ngOnInit(): void {
 
     this.activities=this.activityService.findAllActivities()
@@ -49,27 +47,58 @@ export class AppComponent {
 
 
 
+
+
+
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-  addActivity(data:any):void{
+/**---------Manipular actividades------------------------ */
+
+
+
+
+  addActivity(data:any):void{   //se ejecuta por evento (hijo-padre) desde activities list para crear o editar una actividad
    
-    this.activityAux=data.activity
-    this.formType=data.option
+    this.activityAux=data.activity  //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir 
+    this.formType=data.option       //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   }
 
-  createActivity():void{
+
+
+
+
+  createActivity():void{      //se ejecuta al hacer click en el boton
     
-    this.hide=!this.hide
-    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
-    this.formType='new'
+    this.hide=!this.hide       //cambiar estado del formulario
+    this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}   //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir
+    this.formType='new'                                                                                    //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   }
 
+
+
+
+
+
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-  hideActivityForm():void{
+
+/**---------Esconder formulario------------------------ */
+
+
+  hideActivityForm():void{            //se ejecuta por evento (hijo-padre) desde activities list para cambiar estado del formulario
     this.hide=!this.hide
   }
 
+
+
+
+
+
+
+
+
 /**------------------------------------------------------------------------------------------------------------------------------------ */
-groupByDate(){
+/**---------Crear arreglo con las actividades agrupadas por fecha------------------------ */
+
+groupByDate():void{
 
     this.arrayGroupByDates=[];
     let miArray:any[]=[]
@@ -86,13 +115,10 @@ groupByDate(){
             miArray.push(element)
             this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
 
-
-
         }else{
 
 
-            let previousDate=new Date(this.arrayGroupByDates[this.arrayGroupByDates.length-1].key1).setHours(0, 0, 0)
-            
+            let previousDate=new Date(this.arrayGroupByDates[this.arrayGroupByDates.length-1].key1).setHours(0, 0, 0) 
             if(currentDate===previousDate ){
               
               this.arrayGroupByDates[this.arrayGroupByDates.length-1].array.push(element)
@@ -100,9 +126,9 @@ groupByDate(){
            
             }else{
                 
-                miArray=[]
-                miArray.push(element)
-                this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
+              miArray=[]
+              miArray.push(element)
+              this.arrayGroupByDates.push({ key1: element.startDate, array: miArray})
                 
             }
 
