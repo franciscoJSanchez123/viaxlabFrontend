@@ -49,7 +49,7 @@ export class ActivitiesListComponent {
     
 
     if(date){
-      this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date,endDate:null,status:null}
+      this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:date.slice(0, -8) + "00:00:00",endDate:null,status:null}
     }else{
       this.activityAux={activityId:100, title:'',type:'ACTIVITY',startDate:null,endDate:null,status:null}
 

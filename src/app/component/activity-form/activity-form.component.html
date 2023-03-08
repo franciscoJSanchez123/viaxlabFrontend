@@ -22,7 +22,16 @@
           <div class="input">
             <label><b>Nombre de la actividad</b></label>
             <div class="validator" [hidden]="nameIsValid" >*El nombre es requerido</div>
-            <input #nameValidator="ngModel" (change)="onChangeName(nameValidator)" type="text"  name="name" [(ngModel)]="activityForm.title" [value]="activityForm.title" required minlength="3" maxlength="25">
+              <input 
+                #nameValidator="ngModel" 
+                (change)="onChangeName(nameValidator)" 
+                type="text"  
+                name="name" 
+                [(ngModel)]="activityForm.title" 
+                [value]="activityForm.title" 
+                required minlength="3" 
+                maxlength="25"
+                >
 
             <div class="activity-type">
               <label><b>Tipo de actividad:</b></label>
@@ -37,7 +46,7 @@
 
               <div>
                 <label><b>Fecha de inicio:</b></label>
-                <input type="datetime-local"   [(ngModel)]="activityForm.startDate"  name="startDate" [value]="activityForm.startDate"/>
+                <input type="datetime-local" [(ngModel)]="activityForm.startDate"  name="startDate" [value]="activityForm.startDate" />
               </div>
 
               <div>

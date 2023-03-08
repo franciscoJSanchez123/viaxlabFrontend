@@ -17,25 +17,41 @@ export class ActivityService {
     ) { }
 
 
+
+
+//----------------------------------------------------------------------------------
  findAllActivities(){
   this.activities=activities
   this.localStorageService.saveActivities(this.activities)
   return this.activities
  }
 
+
+
+//----------------------------------------------------------------------------------
+
  updateActivity(activity:Iactivity){
   console.log('todo bien aqui en el servicio de actididades',activity)
   this.localStorageService.updateActivity(activity)
  }
+//----------------------------------------------------------------------------------
+
+
 
  createActivity(activity:Iactivity){
   this.localStorageService.saveActivity(activity)
  }
 
+//----------------------------------------------------------------------------------
+
+
+
  deleteAllActivities(){
   this.localStorageService.deleteAllActivities()
  }
 
+ 
+//----------------------------------------------------------------------------------
  deleteActivity(id:number){
   this.localStorageService.deleteActivity(id)
  }
