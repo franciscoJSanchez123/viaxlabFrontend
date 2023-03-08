@@ -15,8 +15,7 @@
 
 
             <app-activity *ngFor="let activity of group.array " [activity]="activity" (newEvent)="editActivity($event)" ></app-activity>
-            <!--
-            <span class="nueva" (click)="group.key1===null? createActivity('change') : addActivityWithDate(group.key1)" >+ nueva</span>-->
+           
             <span class="nueva" (click)="createActivity(group.key1)" >+ nueva</span>
         </div>
     

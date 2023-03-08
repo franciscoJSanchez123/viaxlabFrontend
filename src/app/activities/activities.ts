@@ -3,27 +3,19 @@ import { Iactivity} from '../models/Iactivity'
 
  export const activities:Iactivity[]=[
 
-{
 
-    "activityId" : 1,
-    "title" : "Subida al cerro catedral",
-    "type":"ACTIVITY",
-    "startDate" : "2022-01-22 01:30:00",
-    "endDate" : "2022-01-22 23:30:00",
-    "status" : "IN_PROGRESS",
-},
 {
 
     "activityId" : 2,
-    "title" : "Fiesta de espuma2",
-    "type":"PARTY",
-    "startDate" :  "2022-01-24 04:30:00" ,
-    "endDate" :  "2022-01-24 23:30:00",
-    "status" : "DONE",
+    "title" : "Merienda",
+    "type":"FOOD",
+    "startDate" :  "2023-03-08 17:30:00",
+    "endDate" :  "2023-03-08 18:00:00",
+    "status" : null,
 },{
 
     "activityId" : 7,
-    "title" : "almuerzo",
+    "title" : "Desayuno",
     "type":"FOOD",
     "startDate" : null,
     "endDate" : null,
@@ -34,8 +26,8 @@ import { Iactivity} from '../models/Iactivity'
 {
 
     "activityId" : 4,
-    "title" : "Desayuno",
-    "type":"FOOD",
+    "title" : "Patagonia",
+    "type":"ACTIVITY",
     "startDate" : null,
     "endDate" : null,
     "status" : null,    
@@ -44,7 +36,7 @@ import { Iactivity} from '../models/Iactivity'
 {
 
     "activityId" : 8,
-    "title" : "CENA",
+    "title" : "Almuerzo",
     "type":"FOOD",
     "startDate" : null,
     "endDate" : null,
@@ -54,38 +46,38 @@ import { Iactivity} from '../models/Iactivity'
 {
 
     "activityId" : 3,
-    "title" : "Fiesta de espuma3",
-    "type":"PARTY",
-    "startDate" :  "2022-01-25 01:30:00",
-    "endDate" :  "2022-01-25 23:30:00",
+    "title" : "Desayuno",
+    "type":"FOOD",
+    "startDate" :  "2023-03-08 08:30:00",
+    "endDate" :  "2023-03-08 10:00:00",
     "status" : "DONE",
 },
 {
 
     "activityId" : 6,
-    "title" : "Fiesta de espuma4",
-    "type":"PARTY",
-    "startDate" :  "2022-01-28 01:30:00",
-    "endDate" :  "2022-01-28 23:30:00",
-    "status" : "DONE",
+    "title" : "Desayuno",
+    "type":"FOOD",
+    "startDate" :  "2023-03-09 08:30:00",
+    "endDate" :  "2023-03-09 10:00:00",
+    "status" : null,
 },
 {
 
     "activityId" : 5,
-    "title" : "Fiesta de espuma",
-    "type":"PARTY",
-    "startDate" :  "2022-01-24 02:30:00",
-    "endDate" :  "2022-01-24 23:30:00",
-    "status" : "DONE",
+    "title" : "Desayuno",
+    "type":"FOOD",
+    "startDate" :  "2023-03-10 08:30:00",
+    "endDate" :  "2023-03-10 10:00:00",
+    "status" : null,
 },
 {
 
     "activityId" : 9,
-    "title" : "Fiesta de lo que sea",
-    "type":"PARTY",
-    "startDate" :  "2022-01-24 03:30:00",
-    "endDate" :  "2022-01-24 23:30:00",
-    "status" : "DONE",
+    "title" : "Snowpark",
+    "type":"ACTIVITY",
+    "startDate" :  "2023-03-08 13:30:00",
+    "endDate" :  "2023-03-08 16:00:00",
+    "status" : null,
 }
 ]
  

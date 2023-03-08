@@ -13,7 +13,7 @@ import { LocalStorageService } from './services/localStorage-service/local-stora
 export class AppComponent {
   title = 'viaxlab';
   activities:Iactivity[]=[]       //arreglo de actividades 
-  arrayGroupByDates:any[]=[];     //se comunica (padre-hijo) con activities list contiene un arreglo con las actividades agrupadas por fecha  
+  arrayGroupByDates:any[]=[];     //se comunica (padre-hijo) con activities list, contiene un arreglo con las actividades agrupadas por fecha  
   activityAux!:Iactivity          //se comunica (padre-hijo) con el formulario para enviar la actividad que se va a añadir 
   formType:string=''              //se comunica (padre-hijo) con el formulario e indica si se crea o edita una actividad
   hide:boolean=false;             //esconde o muestra el formulario
@@ -31,6 +31,9 @@ export class AppComponent {
 
 /**------------------------------------------------------------------------------------------------------------------------------------ */
 /**---------solicitar actividades y permanecer escuchando por cambios en el array de actividads------------------------ */
+
+
+
   ngOnInit(): void {
 
     this.activities=this.activityService.findAllActivities()
