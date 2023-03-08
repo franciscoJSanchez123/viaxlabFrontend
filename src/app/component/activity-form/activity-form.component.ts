@@ -9,7 +9,17 @@ import { InteractionService} from '../../services/interaction-services/interacti
   styleUrls: ['./activity-form.component.css']
 })
 export class ActivityFormComponent implements OnInit {
+  name2:string='';
+  
+  activityForm: Iactivity={
+    activityId:1000,
+    title:'',
+    startDate:'',
+    endDate:'',
+    status:'',
+    type:'',
 
+  };
   @Input() activity!: Iactivity;
   @Input() formType!: string;
   @Output() newEventHideForm = new EventEmitter<any>();
@@ -24,24 +34,38 @@ constructor(
 
 ngOnInit(): void {
 
- 
+
   
 }
 
 
+ngOnChanges(changes:any):void{
+  let actividad=changes.activity.currentValue
+  
+  this.activityForm.activityId=actividad.activityId
+  this.activityForm.title=actividad.title
+  this.activityForm.startDate=actividad.startDate
+  this.activityForm.endDate=actividad.endDate
+  this.activityForm.status=actividad.status
+  this.activityForm.type=actividad.type
+
+
+
+}
+
 submitForm(form:any) {
 
   if(form.form.status==='VALID'){
-    console.log('es valido')
+    
     this.nameIsValid=false
 
     if(this.formType==='new'){
-      const objet={activityId:100, title:this.activity.title,type:'ACTIVITY',startDate:this.activity.startDate,endDate:this.activity.endDate,status:this.activity.status}
+      const objet={activityId:100, title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
       this.activityService.createActivity(objet)
       this.newEventHideForm.emit()
 
     }else{
-      const objet={activityId:this.activity.activityId, title:this.activity.title,type:'ACTIVITY',startDate:this.activity.startDate,endDate:this.activity.endDate,status:this.activity.status}
+      const objet={activityId:this.activityForm.activityId, title:this.activityForm.title,type:'ACTIVITY',startDate:this.activityForm.startDate,endDate:this.activityForm.endDate,status:this.activityForm.status}
       this.activityService.updateActivity(objet)
       this.newEventHideForm.emit()
     }

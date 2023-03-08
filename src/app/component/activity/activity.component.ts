@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Iactivity } from 'src/app/models/Iactivity';
 import { ActivityService } from 'src/app/services/activity-service/activity.service';
+import { InteractionService } from 'src/app/services/interaction-services/interaction.service';
 
 @Component({
   selector: 'app-activity',
@@ -17,7 +18,7 @@ export class ActivityComponent {
 
 
   constructor(
-   
+   private interactionService:InteractionService,
     private activityService:ActivityService,
     ) { }
 
@@ -29,6 +30,7 @@ export class ActivityComponent {
      
       this.newEventHideForm.emit()
       this.newEvent.emit(activityAux);
+      //this.interactionService.addActivityWithDate(activityAux)
       
     }
 
