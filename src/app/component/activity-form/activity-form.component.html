@@ -3,12 +3,14 @@
     <div class="activity-form-block">
 
       <div class="activity-form-header">
+
         <svg width="48" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
           <path d="M19 12L31 24L19 36" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
           
-          <span> {{formType==='new'? 'Agregar nueva actividad' : 'Editar actividad'}}</span>
+        <span> {{formType==='new'? 'Agregar nueva actividad' : 'Editar actividad'}}</span>
+
       </div>
 
       <div class="activity-form-body">
@@ -16,20 +18,26 @@
 
        <div class="form-container">
         <form #contactForm="ngForm" class="form" >
+
           <div class="input">
-              <label><b>Nombre de la actividad</b></label>
-            <div class="validator" [hidden]="nameIsValid" >*el nombre es requerido</div>
+            <label><b>Nombre de la actividad</b></label>
+            <div class="validator" [hidden]="nameIsValid" >*El nombre es requerido</div>
             <input #nameValidator="ngModel" (change)="onChangeName(nameValidator)" type="text"  name="name" [(ngModel)]="activity.title" [value]="activity.title" required minlength="3">
+            
             <div class="date-form">
+
               <div>
                 <label><b>Fecha de inicio:</b></label>
                 <input type="datetime-local"   [(ngModel)]="activity.startDate"  name="startDate" [value]="activity.startDate"/>
               </div>
+
               <div>
                 <label><b>Fecha de finalización:</b></label>
                 <input type="datetime-local"  [(ngModel)]="activity.endDate" name="endDate" [value]="activity.endDate"/>  
               </div>
+
             </div>
+
           </div>
 
           <div class="action-buttons">
@@ -37,71 +45,31 @@
 
             <div class="button">
               <button (click)="hideForm()" [ngStyle]="{'background-color':'#ffffff','color':'#000'}">               
-        
                 <span>Cancelar</span>
-            
              </button>
             </div>
+
             <div class="button" *ngIf="formType==='new'">
-              <button (click)="submitForm(contactForm)" >               
-        
+              <button (click)="submitForm(contactForm)" >
                 <span>Agregar</span>
-            
              </button>
             </div>
+
             <div class="button" *ngIf="formType==='edit'">
-              <button  >               
-        
+              <button (click)="submitForm(contactForm)" > 
                 <span> Guardar Cambios</span>
-            
              </button>
             </div>
 
 
-            <!--
-            <app-button 
-              [text]="'Cancelar'"
-              [backgroundColor]="'#ffffff'"
-              [color]="'#000000'"
-              (click)="hideForm()"></app-button>
-  
-            <app-button 
-              *ngIf="formType==='new'"
-              [text]="'Agregar'"
-              [backgroundColor]="'#5173b8'"
-              [color]="'#ffffff'" 
-              (click)="submitForm(contactForm)"></app-button>
-
-              <app-button 
-              *ngIf="formType==='edit'"
-              [text]="'Guardar Cambios'"
-              [backgroundColor]="'#5173b8'"
-              [color]="'#ffffff'" 
-              (click)="submitForm(contactForm)"></app-button>
-          -->
+       
             
           </div>
           
         </form>
 
        </div>
-<!--
-        <div class="action-buttons">
-          <app-button 
-            [text]="'Cancelar'"
-            [backgroundColor]="'#ffffff'"
-            [color]="'#000000'"
-            (click)="hideForm()"></app-button>
 
-          <app-button 
-            [text]="'Agregar'" 
-            [backgroundColor]="'#5173b8'"
-            [color]="'#ffffff'" 
-            (click)="submitForm()"></app-button>
-          
-          
-        </div>
-      -->
       </div>
 
     </div>

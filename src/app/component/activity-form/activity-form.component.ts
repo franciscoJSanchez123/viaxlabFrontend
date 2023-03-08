@@ -9,9 +9,7 @@ import { InteractionService} from '../../services/interaction-services/interacti
   styleUrls: ['./activity-form.component.css']
 })
 export class ActivityFormComponent implements OnInit {
-  //name2:string = '';
-  //date1 :any= '2023-03-06T07:56';
-  //date2:any = '';
+
   @Input() activity!: Iactivity;
   @Input() formType!: string;
   @Output() newEventHideForm = new EventEmitter<any>();
@@ -26,16 +24,7 @@ constructor(
 
 ngOnInit(): void {
 
-    /*
-  this.interactionService.activityWithDate.subscribe(data=>{
-    console.log(data)
-    this.date1='2023-03-07T07:56'
-    this.name2='epa'
-    
-    console.log(this.date1,this.name2)
-  })
-
- */
+ 
   
 }
 
@@ -50,9 +39,9 @@ submitForm(form:any) {
       const objet={activityId:100, title:this.activity.title,type:'ACTIVITY',startDate:this.activity.startDate,endDate:this.activity.endDate,status:this.activity.status}
       this.activityService.createActivity(objet)
       this.newEventHideForm.emit()
+
     }else{
       const objet={activityId:this.activity.activityId, title:this.activity.title,type:'ACTIVITY',startDate:this.activity.startDate,endDate:this.activity.endDate,status:this.activity.status}
-      console.log('todo bien aqui en el formulario',objet)
       this.activityService.updateActivity(objet)
       this.newEventHideForm.emit()
     }
@@ -67,19 +56,12 @@ submitForm(form:any) {
   
 
 
-  //console.log(`Name: ${this.name2}, Date 1: ${this.date1}, Date 2: ${this.date2}`);
 
-  //const objet={activityId:100, title:this.name2,type:'ACTIVITY',startDate:new Date(this.date1),endDate:this.date2,status:null}
-  //this.activityService.createActivity(objet)
-  //console.log('funciono??')
 }
 
 hideForm(){
-  //this.activityService.clearAllActivities()
-  //this.interactionService.hide(option)
   this.newEventHideForm.emit()
-
-  
+ 
 }
 
 onChangeName(nameValidator:any){
