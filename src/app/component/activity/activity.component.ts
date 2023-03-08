@@ -52,12 +52,19 @@ export class ActivityComponent {
     }
 //---------------------------------------------------------------------------------------------
     extractTime(date:string){
-      let hourAux=(new Date(date)).getHours();
-      let minAux=(new Date(date)).getMinutes();
-      let hour=`${hourAux}`;
-      let min=`${minAux}`;
-      if(hourAux<10) hour=`0${hourAux}`
-      if(minAux<10) min=`0${minAux}`
+      let hour;
+      let min;
+      if(!date){
+        return ''
+
+      }else{
+        let hourAux=(new Date(date)).getHours();
+        let minAux=(new Date(date)).getMinutes();
+        hour=`${hourAux}`;
+        min=`${minAux}`;
+        if(hourAux<10) hour=`0${hourAux}`
+        if(minAux<10) min=`0${minAux}`
+      }
      
       
       return `${hour}:${min}`

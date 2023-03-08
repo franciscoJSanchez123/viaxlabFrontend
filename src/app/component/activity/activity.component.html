@@ -16,7 +16,7 @@
                              <span><b>{{activity.title}}</b> </span>
                           </div>
                           <div class="activity-hour" *ngIf="activity.startDate">
-                             <span>{{extractTime(activity.startDate)}}-{{extractTime(activity.endDate)}}</span>
+                             <span>{{extractTime(activity.startDate)}} <span *ngIf="activity.endDate">-{{extractTime(activity.endDate)}}</span> </span>
                            </div>
                           <div class="activity-status" *ngIf="activity.status">
                              <span [ngStyle]="{'background-color':activity.status==='DONE'?'#b3ffd1' : '#b3dfff'}"> {{activity.status==='DONE'?'Completada' : 'En progreso'}}</span>

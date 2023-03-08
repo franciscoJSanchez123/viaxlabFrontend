@@ -78,7 +78,9 @@ submitForm(form:any) {
       console.log('esto es lo que me otorga',this.activityForm.endDate)
       let start
       let end
-      if(this.activityForm.startDate.length===16){
+      if(this.activityForm.startDate===null){
+        start=this.activityForm.startDate
+      }else if(this.activityForm.startDate.length===16){
         start=this.activityForm.startDate.replace('T', ' ').concat(':00')
       }else if(this.activityForm.startDate===''){
         start=null
@@ -86,7 +88,9 @@ submitForm(form:any) {
         start=this.activityForm.startDate
       }
 
-      if(this.activityForm.endDate.length===16){
+      if(this.activityForm.endDate===null){
+        end=this.activityForm.endDate
+      }else if(this.activityForm.endDate.length===16){
         end=this.activityForm.endDate.replace('T', ' ').concat(':00')
       }else if(this.activityForm.endDate===''){
         end=null
