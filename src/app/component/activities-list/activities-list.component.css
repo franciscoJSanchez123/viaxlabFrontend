@@ -111,6 +111,22 @@ font-weight: 900;
       .date{
         min-width: 60vw;
       }
+
+      .list-container::-webkit-scrollbar {    /*esto es para la parte de atras del scroll*/
+       
+        height: 18px;
+        width: 18px;
+        /*background-color: #1a1a1a;*/
+    }
+    
+    
+    .list-container::-webkit-scrollbar-thumb { /*esta es la barra */
+        
+     
+        border-radius: 7px;
+       
+      }
+    
   
   
     }
